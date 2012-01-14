@@ -3,7 +3,7 @@ require 'rake/gempackagetask'
 
 spec = Gem::Specification::new do |spec|
   spec.name = "oldskool-gcse"
-  spec.version = "0.0.1"
+  spec.version = "0.0.2"
   spec.platform = Gem::Platform::RUBY
   spec.summary = "oldskool-gcse"
   spec.description = "description: Google Custom Search plugin for Oldskool"
