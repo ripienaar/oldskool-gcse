@@ -8,7 +8,7 @@ spec = Gem::Specification::new do |spec|
   spec.summary = "oldskool-gcse"
   spec.description = "description: Google Custom Search plugin for Oldskool"
 
-  spec.files = FileList["lib/**/*.rb", "views/*.erb", "oldskool-gcse.gemspec"]
+  spec.files = FileList["lib/**/*.rb", "views/*.erb"]
   spec.executables = []
 
   spec.require_path = "lib"
