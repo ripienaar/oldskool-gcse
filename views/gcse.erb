@@ -1,0 +1,59 @@
+<% unless @error %>
+  <style type="text/css">
+    .gcse_results {
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      background-color:#b0e0e6;
+    }
+
+    .gcse_stats {
+      font-size: 75%;
+    }
+
+    .gcse_result {
+      padding-bottom: 20px;
+    }
+
+    .gcse_linktext {
+      color: green;
+      font-size: 80%;
+    }
+  </style>
+  <% if @result[:gcse].items %>
+    <div class="gcse_results">
+      <% @result[:gcse].items.each do |item| %>
+        <div class="gcse_result">
+          <div class="gcse_title"><a href="<%= item["link"] %>"><%= item["htmlTitle"] %></a></div>
+          <div class="gcse_snippet"><%= item["htmlSnippet"] %></div>
+          <div class="gcse_linktext"><%= item["link"] %></div>
+        </div>
+      <% end %>
+      <div class="gcse_stats"><%= @result[:gcse].total %> items found in <%= @result[:gcse].querytime %> seconds</div>
+    </div>
+    <div class="pagination">
+      <ul>
+        <% if @result[:gcse].has_previous? %>
+          <li class="prev"><a href="/do?q=<%= @params["q"] %>&page=<%= @params[:page] - 1 %>">&larr; Previous</a></li>
+        <% else %>
+          <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+        <% end %>
+        <% (1..10).each do |i| %>
+          <% break if (i * 10) >= @result[:gcse].total %>
+          <% if @params[:page] == i %>
+            <li class="active"><a href="/do?q=<%= @params["q"] %>&page=<%= i %>"><%= i %></a></li>
+          <% else %>
+            <li><a href="/do?q=<%= @params["q"] %>&page=<%= i %>"><%= i %></a></li>
+          <% end %>
+        <% end %>
+        <% if @result[:gcse].has_next? %>
+          <li class="next"><a href="/do?q=<%= @params["q"] %>&page=<%= @params[:page] + 1 %>">Next &rarr;</a></li>
+        <% else %>
+          <li class="next disabled"><a href="#">Next &rarr;</a></li>
+        <% end %>
+      </ul>
+    </div>
+  <% else %>
+    No results found, daily API limit might have been reached
+  <% end %>
+<% end %>
