@@ -13,15 +13,15 @@ Configuration?
 
 In your _oldskool.yaml_ add the following:
 
-   :google_api_key: YOUR_API_KEY
+    :google_api_key: YOUR_API_KEY
 
 You can then create keywords that search specific search engines:
 
-   :keywords:
-   - :type: :gcse
-     :cx: YOUR_GCSE_IDENTIFIER
-     :keywords:
-     - puppet
+    :keywords:
+    - :type: :gcse
+      :cx: YOUR_GCSE_IDENTIFIER
+      :keywords:
+      - puppet
 
 This creates a keyword _guk_ that will search your specific custom
 search engine
