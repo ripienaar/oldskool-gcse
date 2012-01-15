@@ -1,12 +1,16 @@
 module Oldskool
   class GcseHandler
-    include Utils
+    include Rack::Utils
 
     def initialize(params, keyword, config)
       @params = params
       @keyword = keyword
       @config = config
       self
+    end
+
+    def plugin_template(template)
+      File.read(File.expand_path("../../../views/#{template}.erb", __FILE__))
     end
 
     def handle_request(keyword, query)
@@ -26,7 +30,7 @@ module Oldskool
                   {:title => "Images", :url => "http://google.com/search?q=%s&tbm=isch" % [escape_html query]},
                   {:title => "Videos", :url => "http://google.com/search?q=%s&tbm=vid" % [ escape_html query ]} ]
 
-      {:template => plugin_template(:gcse, __FILE__), :gcse => gcse, :sidemenu => sidemenu}
+      {:template => plugin_template(:gcse), :gcse => gcse, :sidemenu => sidemenu}
     end
   end
 end
