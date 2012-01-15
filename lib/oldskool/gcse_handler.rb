@@ -1,7 +1,5 @@
 module Oldskool
   class GcseHandler
-    include Rack::Utils
-
     def initialize(params, keyword, config)
       @params = params
       @keyword = keyword
@@ -26,9 +24,11 @@ module Oldskool
 
       gcse.search @params[:q], args
 
-      sidemenu = [{:title => "Google", :url => "http://google.com/search?q=%s" % [ escape_html((query || keyword)) ]},
-                  {:title => "Images", :url => "http://google.com/search?q=%s&tbm=isch" % [escape_html query]},
-                  {:title => "Videos", :url => "http://google.com/search?q=%s&tbm=vid" % [ escape_html query ]} ]
+      escaped = URI.escape((query || keyword))
+
+      sidemenu = [{:title => "Google", :url => "http://google.com/search?q=#{escaped}",
+                  {:title => "Images", :url => "http://google.com/search?q=#{escaped}&tbm=isch",
+                  {:title => "Videos", :url => "http://google.com/search?q=#{escaped}&tbm=vid"]
 
       {:template => plugin_template(:gcse), :gcse => gcse, :sidemenu => sidemenu}
     end
