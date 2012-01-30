@@ -28,7 +28,7 @@ module Oldskool
 
       sidemenu = [{:title => "Google", :url => "http://google.com/search?q=#{escaped}",
                   {:title => "Images", :url => "http://google.com/search?q=#{escaped}&tbm=isch",
-                  {:title => "Videos", :url => "http://google.com/search?q=#{escaped}&tbm=vid"]
+                  {:title => "Videos", :url => "http://google.com/search?q=#{escaped}&tbm=vid"}]
 
       {:template => plugin_template(:gcse), :gcse => gcse, :sidemenu => sidemenu}
     end
