@@ -26,9 +26,9 @@ module Oldskool
 
       escaped = URI.escape((query || keyword))
 
-      sidemenu = [{:title => "Google", :url => "http://google.com/search?q=#{escaped}"},
-                  {:title => "Images", :url => "http://google.com/search?q=#{escaped}&tbm=isch"},
-                  {:title => "Videos", :url => "http://google.com/search?q=#{escaped}&tbm=vid"}]
+      sidemenu = [{:title => "Google", :url => "https://google.com/search?q=#{escaped}"},
+                  {:title => "Images", :url => "https://google.com/search?q=#{escaped}&tbm=isch"},
+                  {:title => "Videos", :url => "https://google.com/search?q=#{escaped}&tbm=vid"}]
 
       {:template => plugin_template(:gcse), :gcse => gcse, :sidemenu => sidemenu}
     end
