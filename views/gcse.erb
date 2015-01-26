@@ -32,8 +32,8 @@
       <% end %>
       <div class="gcse_stats"><%= @result[:gcse].total %> items found in <%= @result[:gcse].querytime %> seconds</div>
     </div>
-    <div class="pagination">
-      <ul>
+    <nav>
+      <ul class="pagination">
         <% if @result[:gcse].has_previous? %>
           <li class="prev"><a href="/do?q=<%= @params["q"] %>&page=<%= @params[:page] - 1 %>">&larr; Previous</a></li>
         <% else %>
@@ -53,7 +53,7 @@
           <li class="next disabled"><a href="#">Next &rarr;</a></li>
         <% end %>
       </ul>
-    </div>
+    </nav>
   <% else %>
     No results found, daily API limit might have been reached
   <% end %>
